@@ -32,3 +32,33 @@ in der Regel innerhalb von 7 Tagen.
   ```bash
   sha256sum -c SHA256SUMS.txt --ignore-missing
   ```
+
+---
+
+<a name="english"></a>
+
+# Security policy — English
+
+## Reporting a vulnerability
+
+Please do **not** report security issues through public issues. Use GitHub's
+private reporting instead: the **Security** tab → **Report a vulnerability**.
+The report stays visible to the maintainer only until a fix is available.
+
+Useful details: affected version, operating system and session type (X11 or
+Wayland), steps to reproduce, and the possible impact. You can normally expect
+an acknowledgement within 7 days.
+
+## What the app does with your data
+
+- **Everything stays on your device.** Image processing, the history and the text
+  recognition (OCR) run entirely locally.
+- **One network request only.** The app checks the GitHub releases for a newer
+  version. It can be switched off in the settings. Nothing else leaves the
+  device — no telemetry, no analytics, no user accounts.
+- **Updates are verified.** Downloads are restricted to GitHub hosts and checked
+  against the size and SHA-256 digest published with the release. The app never
+  installs on its own; installation is handed to the system installer.
+- **Captures are private.** Screenshots, thumbnails and temporary files are
+  created with file mode `0600` and their directories with `0700`. On machines
+  with several user accounts nobody else can read them.
