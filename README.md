@@ -2,11 +2,12 @@
 
 *Deutsch · [English below](#english)*
 
-**SäntisShot ist ein kostenloses Screenshot-Programm für Linux** (X11 und
-Wayland) mit Bereichsauswahl, **Scrolling-Screenshots** (ganze Webseiten in
-einem Bild), einem Annotations-Editor, **Texterkennung (OCR)** und einer
-Historie. Es läuft auf **Ubuntu, Linux Mint, Debian, Arch, Fedora und
-openSUSE** — als `.deb`, `AppImage` oder über ein `PKGBUILD`.
+**SäntisShot ist ein kostenloses Screenshot-Programm für Linux und macOS**
+(unter Linux X11 und Wayland) mit Bereichsauswahl, **Scrolling-Screenshots**
+(ganze Webseiten in einem Bild), einem Annotations-Editor, **Texterkennung
+(OCR)** und einer Historie. Unter Linux läuft es auf **Ubuntu, Linux Mint,
+Debian, Arch, Fedora und openSUSE** — als `.deb`, `AppImage` oder über ein
+`PKGBUILD`; auf **macOS (Apple Silicon)** als `.dmg`.
 
 > Dieses Repository enthält ausschliesslich die **fertigen Installationspakete**.
 > Der Quellcode wird nicht veröffentlicht.
@@ -38,8 +39,9 @@ siehe unten). Unter X11 ist nichts zusätzlich nötig.
 **Kann es ganze Webseiten aufnehmen?** Ja – der Scrolling-Screenshot nimmt
 laufend Bilder auf und fügt sie automatisch zu einem hohen Bild zusammen.
 
-**Gibt es eine Version für Windows oder macOS?** Zurzeit nur Linux; macOS ist
-vorbereitet, aber es gibt noch kein fertiges Paket.
+**Gibt es eine Version für Windows oder macOS?** macOS (Apple Silicon) wird ab
+Version 1.6.0 als `.dmg` angeboten – siehe [unten](#macos-apple-silicon). Für
+Windows gibt es zurzeit kein Paket.
 
 ## Installation
 
@@ -78,6 +80,30 @@ chmod +x SaentisShot_*.AppImage
 ./SaentisShot_*.AppImage
 ```
 
+### macOS (Apple Silicon)
+
+Das `.dmg` von der [neuesten Version](https://github.com/dbr24/SaentisShot-Releases/releases/latest)
+laden, öffnen und **SäntisShot** in den Ordner **Programme** ziehen.
+
+Beim ersten Start meldet macOS, die App stamme von einem «nicht verifizierten
+Entwickler» – SäntisShot ist (noch) nicht bei Apple signiert. Einmalig
+freigeben, danach startet sie künftig normal:
+
+- **Rechtsklick** (bzw. Ctrl-Klick) auf **SäntisShot** in «Programme» →
+  **Öffnen** → im Dialog nochmals **Öffnen**.
+- Alternativ im Terminal die Quarantäne-Markierung entfernen:
+  ```bash
+  xattr -dr com.apple.quarantine /Applications/SaentisShot.app
+  ```
+
+Für die Bildschirmaufnahme fragt macOS beim ersten Mal nach der Berechtigung
+**Bildschirmaufnahme** (Systemeinstellungen → Datenschutz & Sicherheit →
+Bildschirmaufnahme). Nach dem Erteilen die App einmal neu starten.
+
+Aktualisieren geht später bequem in der App unter *Einstellungen → Jetzt nach
+Updates suchen*: Das neue `.dmg` wird geprüft heruntergeladen und im Finder zum
+Ziehen nach «Programme» geöffnet.
+
 ### Download prüfen (empfohlen)
 
 ```bash
@@ -86,7 +112,8 @@ curl -fsSLO "$(curl -fsSL https://api.github.com/repos/dbr24/SaentisShot-Release
 sha256sum -c SHA256SUMS.txt --ignore-missing
 ```
 
-Die Ausgabe muss für jede vorhandene Datei `OK` melden.
+Die Ausgabe muss für jede vorhandene Datei `OK` melden. Unter macOS lautet der
+Befehl `shasum -a 256 -c SHA256SUMS.txt --ignore-missing`.
 
 ## Optionale Zusatzpakete
 
@@ -135,11 +162,12 @@ Elastic License 2.0 – siehe [LICENSE](LICENSE).
 
 # SäntisShot — Screenshot tool for Linux
 
-**SäntisShot is a free screenshot tool for Linux** (X11 and Wayland) with region
-selection, **scrolling screenshots** (capture a whole web page as one image), an
-annotation editor, **text recognition (OCR)** and a history. It runs on
-**Ubuntu, Linux Mint, Debian, Arch, Fedora and openSUSE** — as a `.deb`, an
-`AppImage` or through a `PKGBUILD`.
+**SäntisShot is a free screenshot tool for Linux and macOS** (X11 and Wayland on
+Linux) with region selection, **scrolling screenshots** (capture a whole web
+page as one image), an annotation editor, **text recognition (OCR)** and a
+history. On Linux it runs on **Ubuntu, Linux Mint, Debian, Arch, Fedora and
+openSUSE** — as a `.deb`, an `AppImage` or through a `PKGBUILD`; on **macOS
+(Apple Silicon)** as a `.dmg`.
 
 > This repository contains the **ready-made installation packages** only. The
 > source code is not published.
@@ -171,8 +199,9 @@ nothing extra is needed.
 **Can it capture entire web pages?** Yes — the scrolling screenshot keeps
 capturing frames and stitches them into one tall image automatically.
 
-**Is there a Windows or macOS build?** Linux only for now; macOS is prepared but
-there is no ready-made package yet.
+**Is there a Windows or macOS build?** macOS (Apple Silicon) ships as a `.dmg`
+from version 1.6.0 onwards — see [below](#macos-apple-silicon-1). There is no
+Windows package at the moment.
 
 ## Installation
 
@@ -209,6 +238,30 @@ chmod +x SaentisShot_*.AppImage
 ./SaentisShot_*.AppImage
 ```
 
+### macOS (Apple Silicon)
+
+Download the `.dmg` from the [latest release](https://github.com/dbr24/SaentisShot-Releases/releases/latest),
+open it and drag **SäntisShot** into your **Applications** folder.
+
+On first launch macOS reports that the app is from an “unidentified developer” —
+SäntisShot is not (yet) signed with Apple. Allow it once, after which it starts
+normally:
+
+- **Right-click** (or Ctrl-click) **SäntisShot** in Applications → **Open** →
+  **Open** again in the dialog.
+- Or remove the quarantine flag in a terminal:
+  ```bash
+  xattr -dr com.apple.quarantine /Applications/SaentisShot.app
+  ```
+
+For screen capture macOS asks once for the **Screen Recording** permission
+(System Settings → Privacy & Security → Screen Recording). Restart the app once
+after granting it.
+
+Updating later is easiest inside the app under *Settings → Check for updates
+now*: the new `.dmg` is downloaded verified and opened in Finder to drag into
+**Applications**.
+
 ### Verifying the download (recommended)
 
 ```bash
@@ -217,7 +270,8 @@ curl -fsSLO "$(curl -fsSL https://api.github.com/repos/dbr24/SaentisShot-Release
 sha256sum -c SHA256SUMS.txt --ignore-missing
 ```
 
-The output must read `OK` for every file present.
+The output must read `OK` for every file present. On macOS the command is
+`shasum -a 256 -c SHA256SUMS.txt --ignore-missing`.
 
 ## Optional extras
 
