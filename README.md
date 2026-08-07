@@ -1,4 +1,4 @@
-# SäntisShot — Screenshot-Tool für Linux 🏔️📸
+# SäntisShot — Screenshot-Tool für Linux und macOS 🏔️📸
 
 *Deutsch · [English below](#english)*
 
@@ -140,7 +140,8 @@ SäntisShot prüft beim Start und danach täglich, ob hier eine neuere Version
 liegt, und meldet sie in der App – das ist der einzige Netzwerkaufruf des
 Programms und lässt sich in den Einstellungen abschalten. Installiert wird nur
 auf ausdrücklichen Klick; der Download wird gegen Grösse und SHA-256-Prüfsumme
-des Releases verifiziert und über den System-Installer eingespielt.
+des Releases verifiziert und dann eingespielt – unter Linux über den
+System-Installer, auf macOS im Finder zum Ziehen nach «Programme».
 
 ## Sicherheit
 
@@ -160,7 +161,7 @@ Elastic License 2.0 – siehe [LICENSE](LICENSE).
 
 <a name="english"></a>
 
-# SäntisShot — Screenshot tool for Linux
+# SäntisShot — Screenshot tool for Linux and macOS
 
 **SäntisShot is a free screenshot tool for Linux and macOS** (X11 and Wayland on
 Linux) with region selection, **scrolling screenshots** (capture a whole web
@@ -296,9 +297,9 @@ falls back to the GNOME Shell’s own interface.
 
 ## Updates
 
-The app checks for new versions itself and can install them through the system
-installer. The check is the only network request it makes and can be switched off
-in the settings.
+The app checks for new versions itself and installs them on explicit click – on
+Linux through the system installer, on macOS by opening the `.dmg` in Finder. The
+check is the only network request it makes and can be switched off in the settings.
 
 ## Security
 
