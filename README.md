@@ -73,11 +73,35 @@ Die Datei `SHA256SUMS.txt` brauchst du nur, wenn du den Download
 > **Mac mit Intel-Prozessor?** Dafür gibt es zurzeit kein Paket – die
 > `aarch64`-Fassung läuft dort nicht.
 
-Für jedes System gibt es unten zwei Wege: **mit der Maus** oder **im Terminal**.
-Beide führen zum selben Ergebnis; die Terminal-Befehle holen die aktuelle
-Version automatisch.
+Unten steht bei jedem System **der einfachste Weg zuerst**. Wer noch nie ein
+Terminal benutzt hat, folgt einfach dem ersten Block – das genügt. Die kurzen
+Befehle darunter sind nur eine Abkürzung für Geübte; sie holen die aktuelle
+Version selbst.
+
+> **Terminal öffnen:** unter Linux mit `Strg`+`Alt`+`T`, unter macOS mit
+> `Cmd`+`Leertaste`, dann «Terminal» tippen. Befehl hineinkopieren, `Enter`.
+> Beim Passwort bewegt sich nichts auf dem Bildschirm – das ist so gewollt und
+> kein Fehler.
 
 ### 🐧 Linux Mint, Ubuntu und Pop!_OS
+
+**Schritt für Schritt:**
+
+1. Auf der [Download-Seite](https://github.com/dbr24/SaentisShot-Releases/releases/latest)
+   die Datei anklicken, die auf `_amd64.deb` endet. Sie landet im Ordner
+   **Downloads**.
+2. Terminal öffnen und diese eine Zeile hineinkopieren:
+
+   ```bash
+   sudo apt install -y ~/Downloads/SaentisShot_*_amd64.deb
+   ```
+
+Unter **Linux Mint** reicht auch ein Doppelklick auf die geladene Datei – die
+Paketinstallation öffnet sich und macht den Rest. Bei Ubuntu und Pop!_OS
+kommt es auf die Fassung an, was der Doppelklick öffnet; der Befehl oben
+funktioniert dagegen überall.
+
+**Abkürzung** – lädt und installiert in einem Rutsch:
 
 ```bash
 curl -fsSLO "$(curl -fsSL https://api.github.com/repos/dbr24/SaentisShot-Releases/releases/latest \
@@ -101,17 +125,22 @@ sudo apt install -y tesseract-ocr tesseract-ocr-deu tesseract-ocr-eng
 
 ### 🐧 CachyOS
 
+Hier führt kein Weg am Terminal vorbei: CachyOS baut das Paket selbst
+zusammen. Die vier Zeilen der Reihe nach einfügen – die zweite legt einen
+eigenen, leeren Ordner an, weil beim Bauen Dateien entstehen:
+
 ```bash
 sudo pacman -S --needed base-devel curl          # einmalig, falls noch nicht da
+mkdir -p ~/saentisshot-bau && cd ~/saentisshot-bau
 curl -fsSLO "$(curl -fsSL https://api.github.com/repos/dbr24/SaentisShot-Releases/releases/latest \
   | grep -o 'https://github.com/dbr24/SaentisShot-Releases/releases/download/[^"]*/PKGBUILD' | head -n1)"
 makepkg -si
 ```
 
-> **Nicht als `root` ausführen.** `makepkg` verweigert das grundsätzlich und
-> bricht mit einer Fehlermeldung ab. Als normaler Nutzer aufrufen – nach dem
-> Bauen fragt es selbst nach dem Passwort. Und am besten in einem eigenen,
-> leeren Ordner, weil `makepkg` dort Dateien anlegt.
+> **Nicht als `root` und nicht mit `sudo makepkg` ausführen.** `makepkg`
+> verweigert das grundsätzlich und bricht mit einer Fehlermeldung ab. Als
+> normaler Nutzer aufrufen – nach dem Bauen fragt es von selbst nach dem
+> Passwort.
 
 Das PKGBUILD lädt das offizielle Paket, **prüft dessen SHA-256-Prüfsumme** und
 installiert es als `saentisshot-bin`. Empfohlen für Texterkennung (OCR):
@@ -168,7 +197,19 @@ Terminal-Befehl oben – er nimmt die Markierung gleich ab.
 2. SäntisShot ist eine **Menüleisten-App**: Sie erscheint oben rechts bei den
    Symbolen, nicht im Dock.
 
-Für Texterkennung (OCR): `brew install tesseract tesseract-lang`
+Für Texterkennung (OCR) genügen zwei Befehle – das grosse Sprachpaket
+(`tesseract-lang`, über 1 GB) braucht es nicht, SäntisShot nutzt nur Deutsch
+und Englisch:
+
+```bash
+brew install tesseract
+curl -fsSL https://github.com/tesseract-ocr/tessdata/raw/main/deu.traineddata \
+  -o "$(brew --prefix tesseract)/share/tessdata/deu.traineddata"
+```
+
+SäntisShot legt beim ersten Erkennen eine eigene Kopie der Sprachdaten an – ein
+späteres Tesseract-Update kann die Erkennung damit nicht mehr auf Englisch
+zurückwerfen.
 
 *Deinstallieren:* `rm -rf /Applications/SaentisShot.app`
 
@@ -360,11 +401,32 @@ tested** and not supported; if you want to try it, make it executable with
 > **Mac with an Intel processor?** There is no package for it at the moment –
 > the `aarch64` build will not run there.
 
-Each system below offers two routes: **with the mouse** or **in a terminal**.
-Both end up the same; the terminal commands fetch the current version
-automatically.
+For every system below, **the simplest route comes first**. If you have never
+used a terminal, just follow the first block — that is enough. The short
+commands underneath are a shortcut for the practised; they fetch the current
+version themselves.
+
+> **Opening a terminal:** on Linux press `Ctrl`+`Alt`+`T`, on macOS press
+> `Cmd`+`Space` and type "Terminal". Paste the command, press `Enter`. While
+> you type a password nothing moves on screen — that is intended, not a fault.
 
 ### 🐧 Linux Mint, Ubuntu and Pop!_OS
+
+**Step by step:**
+
+1. On the [download page](https://github.com/dbr24/SaentisShot-Releases/releases/latest)
+   click the file ending in `_amd64.deb`. It lands in your **Downloads** folder.
+2. Open a terminal and paste this single line:
+
+   ```bash
+   sudo apt install -y ~/Downloads/SaentisShot_*_amd64.deb
+   ```
+
+On **Linux Mint** a double-click on the downloaded file works just as well —
+the package installer opens and does the rest. On Ubuntu and Pop!_OS what the
+double-click opens depends on the release; the command above works everywhere.
+
+**Shortcut** — downloads and installs in one go:
 
 ```bash
 curl -fsSLO "$(curl -fsSL https://api.github.com/repos/dbr24/SaentisShot-Releases/releases/latest \
@@ -387,17 +449,21 @@ sudo apt install -y tesseract-ocr tesseract-ocr-deu tesseract-ocr-eng
 
 ### 🐧 CachyOS
 
+There is no way around the terminal here: CachyOS assembles the package itself.
+Paste the four lines in order — the second one creates a dedicated empty
+folder, because building produces files:
+
 ```bash
 sudo pacman -S --needed base-devel curl          # once, if not present yet
+mkdir -p ~/saentisshot-build && cd ~/saentisshot-build
 curl -fsSLO "$(curl -fsSL https://api.github.com/repos/dbr24/SaentisShot-Releases/releases/latest \
   | grep -o 'https://github.com/dbr24/SaentisShot-Releases/releases/download/[^"]*/PKGBUILD' | head -n1)"
 makepkg -si
 ```
 
-> **Do not run this as `root`.** `makepkg` refuses to run as root and aborts
-> with an error. Call it as your normal user — it asks for the password itself
-> once the package is built. Best done in an empty directory of its own, since
-> `makepkg` creates files there.
+> **Do not run this as `root`, and not with `sudo makepkg`.** `makepkg` refuses
+> to run as root and aborts with an error. Call it as your normal user — it asks
+> for the password itself once the package is built.
 
 The PKGBUILD downloads the official package, **verifies its SHA-256 digest** and
 installs it as `saentisshot-bin`. Recommended for OCR:
@@ -452,7 +518,18 @@ removing the quarantine flag right away.
 2. SäntisShot is a **menu bar app**: it lives in the status bar at the top
    right, not in the Dock.
 
-For OCR: `brew install tesseract tesseract-lang`
+For text recognition (OCR) two commands are enough – the big language pack
+(`tesseract-lang`, over 1 GB) is not needed, SäntisShot only uses German and
+English:
+
+```bash
+brew install tesseract
+curl -fsSL https://github.com/tesseract-ocr/tessdata/raw/main/deu.traineddata \
+  -o "$(brew --prefix tesseract)/share/tessdata/deu.traineddata"
+```
+
+On first use SäntisShot keeps its own copy of the language data, so a later
+Tesseract upgrade cannot silently fall back to English.
 
 *Uninstall:* `rm -rf /Applications/SaentisShot.app`
 
