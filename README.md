@@ -2,322 +2,244 @@
 
 *Deutsch · [English below](#english)*
 
-**SäntisShot ist ein kostenloses Screenshot-Programm für Linux und macOS**
-(unter Linux X11 und Wayland) mit Bereichsauswahl, **Scrolling-Screenshots**
-(ganze Webseiten in einem Bild), einem Annotations-Editor, **Texterkennung
-(OCR)** und einer Historie.
+**SäntisShot ist ein kostenloses Screenshot-Programm** mit Bereichsauswahl,
+**Scrolling-Screenshots** (ganze Webseiten in einem Bild), einem Editor zum
+Beschriften, **Texterkennung (OCR)** und einer Historie. Alles läuft lokal auf
+deinem Gerät.
 
-SäntisShot gibt es für **Linux Mint**, **Ubuntu**, **Pop!_OS**, **CachyOS** und
-**macOS (Apple Silicon)** – und nur für diese. Für andere Systeme bieten wir
-bewusst nichts an: Wir könnten es dort weder prüfen noch unterstützen.
-
-**Geprüft** haben wir Linux Mint, Ubuntu, CachyOS und macOS. Pop!_OS nutzt
-dasselbe Paket wie Ubuntu und wurde von einem Nutzer installiert.
+Es gibt SäntisShot für **Linux Mint**, **Ubuntu**, **Pop!_OS**, **CachyOS** und
+**Macs mit Apple-Chip**.
 
 ### ⬇️ [Aktuelle Version herunterladen](https://github.com/dbr24/SaentisShot-Releases/releases/latest)
 
-> Dieses Repository enthält ausschliesslich die **fertigen Installationspakete**.
-> Der Quellcode wird nicht veröffentlicht.
-
-## Was kann SäntisShot?
-
-| | |
-|---|---|
-| **Aufnehmen** | Ganzer Bildschirm, einzelnes Fenster, frei gewählter Bereich – oder **scrollend**, wenn die Seite länger ist als der Bildschirm |
-| **Bearbeiten** | Pfeile, Linien, Rechtecke, Kreise, Text, Nummern-Stempel, Schatten; Elemente rasten aneinander ein |
-| **Unkenntlich machen** | Verpixeln sensibler Stellen – nachträglich verschiebbar und drehbar |
-| **Text auslesen** | OCR direkt aus dem Bild, vollständig offline (Tesseract) |
-| **Verwalten** | Historie nach Datum, verlustfreie Projekte, Export als PNG, JPG oder WebP |
-| **Sprache** | Oberfläche auf **Deutsch und Englisch**, folgt der Systemsprache |
-
-**Datenschutz:** Alles läuft lokal auf dem Gerät. Der einzige Netzwerkaufruf ist
-die Suche nach Updates auf GitHub, und die lässt sich abschalten. Keine
-Telemetrie, keine Konten, keine Cloud.
-
-## Häufige Fragen
-
-**Ist SäntisShot kostenlos?** Ja. Lizenz: Elastic License 2.0.
-
-**Funktioniert es unter Wayland?** Ja. Wayland lässt Programme aus
-Sicherheitsgründen nicht selbst den Bildschirm lesen, deshalb wird ein natives
-Werkzeug benötigt (`grim`+`slurp`, `gnome-screenshot` oder `kde-spectacle`,
-siehe unten). Unter X11 ist nichts zusätzlich nötig.
-
-**Kann es ganze Webseiten aufnehmen?** Ja – der Scrolling-Screenshot nimmt
-laufend Bilder auf und fügt sie automatisch zu einem hohen Bild zusammen.
-
-**Gibt es eine Version für Windows oder macOS?** Für macOS (Apple Silicon) gibt
-es ein `.dmg` – siehe [Installation](#-macos-apple-silicon). Für Windows und für
-Intel-Macs gibt es zurzeit kein Paket.
+> Dieses Repository enthält nur die fertigen Installationspakete, nicht den
+> Quellcode.
 
 ## Installation
 
-### Welche Datei brauche ich?
+| Dein System | So geht's |
+|---|---|
+| **Linux Mint** | [Datei laden, doppelklicken – fertig](#-linux-mint) |
+| **Ubuntu**, **Pop!_OS** | [Eine Zeile im Terminal](#-ubuntu-und-pop_os) |
+| **CachyOS** | [Vier Zeilen im Terminal](#-cachyos) |
+| **Mac** mit Apple-Chip (M1 oder neuer) | [Datei laden, App in «Programme» ziehen](#-mac) |
 
-Auf der [Download-Seite](https://github.com/dbr24/SaentisShot-Releases/releases/latest)
-liegen mehrere Dateien. Die richtige findest du hier:
+Für Windows und für Macs mit Intel-Prozessor gibt es zurzeit kein Paket.
 
-| Dein System | Datei | Anleitung |
-|---|---|---|
-| **Mac** mit Apple-Chip (M1–M4) | `SaentisShot_…_aarch64.dmg` | [macOS](#-macos-apple-silicon) |
-| **Linux Mint**, Ubuntu, Pop!_OS | `SaentisShot_…_amd64.deb` | [Debian-Familie](#-linux-mint-ubuntu-und-pop_os) |
-| **CachyOS** | `PKGBUILD` | [CachyOS](#-cachyos) |
+> **Terminal öffnen:** unter Linux mit `Strg`+`Alt`+`T`, auf dem Mac mit
+> `Cmd`+`Leertaste`, dann «Terminal» tippen und `Enter`. Befehl hineinkopieren
+> (Rechtsklick → Einfügen) und mit `Enter` bestätigen. **Beim Passwort erscheinen
+> keine Zeichen** – das ist normal. Einfach blind tippen und `Enter` drücken.
 
-Im Release liegt zusätzlich ein `AppImage` für andere Linux-Systeme. Es ist
-**nicht getestet** und wird nicht unterstützt; wer es versuchen will, macht es
-mit `chmod +x` ausführbar und startet es direkt.
-
-Die Datei `SHA256SUMS.txt` brauchst du nur, wenn du den Download
-[überprüfen](#download-prüfen-empfohlen) möchtest.
-
-> **Mac mit Intel-Prozessor?** Dafür gibt es zurzeit kein Paket – die
-> `aarch64`-Fassung läuft dort nicht.
-
-Unten steht bei jedem System **der einfachste Weg zuerst**. Wer noch nie ein
-Terminal benutzt hat, folgt einfach dem ersten Block – das genügt. Die kurzen
-Befehle darunter sind nur eine Abkürzung für Geübte; sie holen die aktuelle
-Version selbst.
-
-> **Terminal öffnen:** unter Linux mit `Strg`+`Alt`+`T`, unter macOS mit
-> `Cmd`+`Leertaste`, dann «Terminal» tippen. Befehl hineinkopieren, `Enter`.
-> Beim Passwort bewegt sich nichts auf dem Bildschirm – das ist so gewollt und
-> kein Fehler.
-
-### 🐧 Linux Mint, Ubuntu und Pop!_OS
-
-**Schritt für Schritt:**
+### 🐧 Linux Mint
 
 1. Auf der [Download-Seite](https://github.com/dbr24/SaentisShot-Releases/releases/latest)
-   die Datei anklicken, die auf `_amd64.deb` endet. Sie landet im Ordner
-   **Downloads**.
-2. Terminal öffnen und diese eine Zeile hineinkopieren:
+   die Datei anklicken, die auf **`_amd64.deb`** endet.
+2. Den Ordner **Downloads** öffnen und die Datei **doppelklicken**.
+3. Auf **«Paket installieren»** klicken und dein Passwort eingeben.
 
-   ```bash
-   sudo apt install -y ~/Downloads/SaentisShot_*_amd64.deb
-   ```
+Fertig – **SäntisShot** steht jetzt im Startmenü.
 
-Unter **Linux Mint** reicht auch ein Doppelklick auf die geladene Datei – die
-Paketinstallation öffnet sich und macht den Rest. Bei Ubuntu und Pop!_OS
-kommt es auf die Fassung an, was der Doppelklick öffnet; der Befehl oben
-funktioniert dagegen überall.
-
-**Abkürzung** – lädt und installiert in einem Rutsch:
+**Oder im Terminal** – diese eine Zeile lädt die aktuelle Version selbst und
+installiert sie:
 
 ```bash
-curl -fsSLO "$(curl -fsSL https://api.github.com/repos/dbr24/SaentisShot-Releases/releases/latest \
-  | grep -o 'https://github.com/dbr24/SaentisShot-Releases/releases/download/[^"]*_amd64\.deb' | head -n1)"
-sudo apt install -y ./SaentisShot_*_amd64.deb
+wget -qO /tmp/saentisshot.deb "$(wget -qO- https://api.github.com/repos/dbr24/SaentisShot-Releases/releases/latest | grep -o 'https://[^"]*_amd64\.deb' | head -n1)" && sudo apt install -y /tmp/saentisshot.deb
 ```
 
-`apt` zieht die benötigten Bibliotheken selbst nach. Danach steht **SäntisShot**
-im Anwendungsmenü. Empfohlen für Texterkennung (OCR):
+### 🐧 Ubuntu und Pop!_OS
+
+Terminal öffnen und diese **eine Zeile** einfügen – sie lädt die aktuelle
+Version selbst und installiert sie:
+
+```bash
+wget -qO /tmp/saentisshot.deb "$(wget -qO- https://api.github.com/repos/dbr24/SaentisShot-Releases/releases/latest | grep -o 'https://[^"]*_amd64\.deb' | head -n1)" && sudo apt install -y /tmp/saentisshot.deb
+```
+
+Fertig – **SäntisShot** steht jetzt im Anwendungsmenü. (Ein Doppelklick auf
+die heruntergeladene Datei öffnet je nach Ubuntu-Fassung ein anderes Programm;
+die Zeile oben funktioniert überall gleich.)
+
+> **Ubuntu mit Wayland** (die Vorgabe) – zusätzlich einmal:
+>
+> ```bash
+> sudo apt install -y gnome-screenshot
+> ```
+>
+> Ohne das fragt Ubuntu bei jeder Aufnahme nach. Den kurzen Blitz beim
+> Auslösen macht Ubuntu selbst. Die Scrolling-Aufnahme ist unter Ubuntu mit
+> Wayland nicht möglich; Bildschirm, Fenster und Bereich funktionieren.
+
+### 🐧 CachyOS
+
+Hier geht es nur über das Terminal, weil CachyOS das Paket selbst
+zusammenbaut. Die vier Zeilen nacheinander einfügen:
+
+```bash
+sudo pacman -S --needed base-devel
+mkdir -p ~/saentisshot-bau && cd ~/saentisshot-bau
+curl -fLO https://github.com/dbr24/SaentisShot-Releases/releases/latest/download/PKGBUILD
+makepkg -si
+```
+
+Die letzte Zeile **nicht** mit `sudo` davor ausführen – `makepkg` fragt am
+Ende von selbst nach dem Passwort. Das PKGBUILD lädt das offizielle Paket und
+prüft dessen SHA-256-Prüfsumme.
+
+### 🍎 Mac
+
+1. Auf der [Download-Seite](https://github.com/dbr24/SaentisShot-Releases/releases/latest)
+   die Datei anklicken, die auf **`_aarch64.dmg`** endet, und sie doppelklicken.
+2. **SaentisShot** in den Ordner **Programme** ziehen.
+3. **Beim ersten Öffnen** meldet macOS, die App könne nicht überprüft werden
+   (sie ist nicht bei Apple notarisiert). Einmalig freigeben:
+   - **macOS 15 (Sequoia) und neuer:** Die Meldung mit **Fertig** schliessen,
+     dann **Systemeinstellungen → Datenschutz & Sicherheit** öffnen, ganz nach
+     unten scrollen und bei «SaentisShot wurde blockiert» auf **Trotzdem
+     öffnen** klicken.
+   - **macOS 14 und älter:** **Rechtsklick** auf die App → **Öffnen** → nochmals
+     **Öffnen**.
+4. Die Frage nach **Bildschirmaufnahme** erlauben und SäntisShot danach einmal
+   neu starten. Ohne diese Berechtigung nimmt macOS nur den
+   Schreibtischhintergrund auf.
+
+SäntisShot ist eine **Menüleisten-App**: Das Symbol erscheint oben rechts in der
+Menüleiste, nicht im Dock.
+
+<details>
+<summary><b>Oder im Terminal</b> (erspart auch Schritt 3)</summary>
+
+```bash
+curl -fLo /tmp/SaentisShot.dmg "$(curl -fsSL https://api.github.com/repos/dbr24/SaentisShot-Releases/releases/latest | grep -o 'https://[^"]*_aarch64\.dmg' | head -n1)"
+hdiutil attach /tmp/SaentisShot.dmg
+cp -R /Volumes/SaentisShot/SaentisShot.app /Applications/
+hdiutil detach /Volumes/SaentisShot
+xattr -dr com.apple.quarantine /Applications/SaentisShot.app
+open /Applications/SaentisShot.app
+```
+
+</details>
+
+## Texterkennung (OCR) einrichten
+
+Für die Texterkennung braucht SäntisShot das kostenlose Programm Tesseract.
+Einmal den Befehl für dein System ausführen:
+
+**Linux Mint, Ubuntu, Pop!_OS:**
 
 ```bash
 sudo apt install -y tesseract-ocr tesseract-ocr-deu tesseract-ocr-eng
 ```
 
-> **Auf einer Wayland-Sitzung** (bei Ubuntu die Vorgabe) zusätzlich
-> `sudo apt install -y gnome-screenshot` – sonst fragt GNOME bei jeder Aufnahme
-> nach. Der kurze Blitz beim Auslösen kommt von GNOME selbst und lässt sich
-> nicht abschalten.
-
-*Deinstallieren:* `sudo apt remove saentisshot`
-
-### 🐧 CachyOS
-
-Hier führt kein Weg am Terminal vorbei: CachyOS baut das Paket selbst
-zusammen. Die vier Zeilen der Reihe nach einfügen – die zweite legt einen
-eigenen, leeren Ordner an, weil beim Bauen Dateien entstehen:
+**CachyOS:**
 
 ```bash
-sudo pacman -S --needed base-devel curl          # einmalig, falls noch nicht da
-mkdir -p ~/saentisshot-bau && cd ~/saentisshot-bau
-curl -fsSLO "$(curl -fsSL https://api.github.com/repos/dbr24/SaentisShot-Releases/releases/latest \
-  | grep -o 'https://github.com/dbr24/SaentisShot-Releases/releases/download/[^"]*/PKGBUILD' | head -n1)"
-makepkg -si
+sudo pacman -S --needed tesseract tesseract-data-deu tesseract-data-eng
 ```
 
-> **Nicht als `root` und nicht mit `sudo makepkg` ausführen.** `makepkg`
-> verweigert das grundsätzlich und bricht mit einer Fehlermeldung ab. Als
-> normaler Nutzer aufrufen – nach dem Bauen fragt es von selbst nach dem
-> Passwort.
-
-Das PKGBUILD lädt das offizielle Paket, **prüft dessen SHA-256-Prüfsumme** und
-installiert es als `saentisshot-bin`. Empfohlen für Texterkennung (OCR):
-
-```bash
-sudo pacman -S tesseract tesseract-data-deu tesseract-data-eng
-```
-
-*Deinstallieren:* `sudo pacman -R saentisshot-bin`
-
-### 🍎 macOS (Apple Silicon)
-
-**Mit der Maus:** `.dmg` von der
-[Download-Seite](https://github.com/dbr24/SaentisShot-Releases/releases/latest)
-laden, doppelklicken und **SäntisShot** in den Ordner **Programme** ziehen.
-Weiter beim Abschnitt «Beim ersten Start» unten.
-
-**Oder im Terminal** – lädt, öffnet und legt die App nach «Programme»:
-
-```bash
-curl -fsSLO "$(curl -fsSL https://api.github.com/repos/dbr24/SaentisShot-Releases/releases/latest \
-  | grep -o 'https://github.com/dbr24/SaentisShot-Releases/releases/download/[^"]*_aarch64\.dmg' | head -n1)"
-hdiutil attach SaentisShot_*_aarch64.dmg
-cp -R /Volumes/SaentisShot/SaentisShot.app /Applications/
-hdiutil detach /Volumes/SaentisShot
-xattr -dr com.apple.quarantine /Applications/SaentisShot.app   # Gatekeeper-Hinweis abnehmen
-open /Applications/SaentisShot.app
-```
-
-#### Beim ersten Start
-
-macOS meldet, die App könne nicht geöffnet werden (SäntisShot
-ist nicht bei Apple notarisiert). Einmalig freigeben – der Weg hängt von der
-macOS-Fassung ab:
-
-- **macOS 15 (Sequoia) und neuer:** App doppelklicken, die Meldung mit
-  **Fertig** schliessen. Dann **Systemeinstellungen → Datenschutz & Sicherheit**
-  öffnen, nach unten scrollen zu «SaentisShot wurde blockiert …» und auf
-  **Trotzdem öffnen** klicken. Mit Touch ID oder Passwort bestätigen.
-  *(Der frühere Rechtsklick-Trick funktioniert ab dieser Fassung nicht mehr.)*
-- **macOS 14 (Sonoma) und älter:** **Rechtsklick** auf die App → **Öffnen** →
-  im Dialog nochmals **Öffnen**.
-
-Danach startet sie immer normal. Wer den Weg abkürzen will, nimmt den
-Terminal-Befehl oben – er nimmt die Markierung gleich ab.
-
-**Zwei Dinge beim ersten Start:**
-
-1. macOS fragt nach der Berechtigung **Bildschirmaufnahme** (Systemeinstellungen
-   → Datenschutz & Sicherheit → Bildschirmaufnahme). Ohne sie nimmt jedes
-   Programm unter macOS nur den Schreibtischhintergrund auf. Nach dem Erteilen
-   SäntisShot einmal neu starten – danach bleibt die Berechtigung auch über
-   Updates hinweg erhalten.
-2. SäntisShot ist eine **Menüleisten-App**: Sie erscheint oben rechts bei den
-   Symbolen, nicht im Dock.
-
-Für Texterkennung (OCR) genügen zwei Befehle – das grosse Sprachpaket
-(`tesseract-lang`, über 1 GB) braucht es nicht, SäntisShot nutzt nur Deutsch
-und Englisch:
+**Mac** (setzt [Homebrew](https://brew.sh) voraus):
 
 ```bash
 brew install tesseract
-curl -fsSL https://github.com/tesseract-ocr/tessdata/raw/main/deu.traineddata \
-  -o "$(brew --prefix tesseract)/share/tessdata/deu.traineddata"
+curl -fsSL https://github.com/tesseract-ocr/tessdata/raw/main/deu.traineddata -o "$(brew --prefix tesseract)/share/tessdata/deu.traineddata"
 ```
-
-SäntisShot legt beim ersten Erkennen eine eigene Kopie der Sprachdaten an – ein
-späteres Tesseract-Update kann die Erkennung damit nicht mehr auf Englisch
-zurückwerfen.
-
-*Deinstallieren:* `rm -rf /Applications/SaentisShot.app`
-
-### Download prüfen (empfohlen)
-
-```bash
-curl -fsSLO "$(curl -fsSL https://api.github.com/repos/dbr24/SaentisShot-Releases/releases/latest \
-  | grep -o 'https://github.com/dbr24/SaentisShot-Releases/releases/download/[^"]*/SHA256SUMS\.txt' | head -n1)"
-sha256sum -c SHA256SUMS.txt --ignore-missing
-```
-
-Die Ausgabe muss für jede vorhandene Datei `OK` melden. Unter macOS lautet der
-Befehl `shasum -a 256 -c SHA256SUMS.txt --ignore-missing`.
-
-## Optionale Zusatzpakete
-
-Texterkennung (OCR) im Editor:
-
-```bash
-sudo apt install -y tesseract-ocr tesseract-ocr-deu tesseract-ocr-eng   # Mint, Ubuntu, Pop!_OS
-sudo pacman -S tesseract tesseract-data-deu tesseract-data-eng          # CachyOS
-```
-
-Nur bei **Wayland**-Sitzungen nötig, je nach Desktop:
-
-```bash
-sudo apt install -y grim slurp          # Sway, Hyprland
-sudo apt install -y gnome-screenshot    # GNOME, Cinnamon
-sudo apt install -y kde-spectacle       # KDE Plasma
-```
-
-Unter X11 (Standard bei Linux Mint) sind keine Zusatztools nötig.
 
 ## Erste Schritte
 
-**Screenshot machen:** Drück die **Druck-Taste** (je nach Tastatur beschriftet
-mit `Druck`, `Print` oder `PrtSc`). Es erscheint eine kleine Auswahl mit den vier
-Aufnahmearten — Bildschirm, Fenster, Bereich, Scrollend. Wähle mit der Maus oder
+**Screenshot machen:** Drück die **Druck-Taste** (je nach Tastatur `Druck`,
+`Print` oder `PrtSc`). Unten rechts erscheint eine kleine Auswahl mit den vier
+Aufnahmearten – Bildschirm, Fenster, Bereich, Scrollend. Wähle mit der Maus oder
 den Tasten `1` bis `4`; `Enter` wiederholt die zuletzt benutzte Art.
 
-Das Programm läuft dabei im Hintergrund. Erreichbar ist es jederzeit über das
-Symbol im Infobereich neben der Uhr.
+**Nach der Aufnahme** liegt das Bild sofort in der Zwischenablage – mit
+`Strg`+`V` fügst du es überall ein. Unten rechts erscheint eine Vorschau; ein
+Klick darauf öffnet den Editor.
 
-**Nach der Aufnahme** liegt das Bild sofort in der Zwischenablage — du kannst es
-mit `Ctrl+V` einfügen. Unten rechts erscheint zusätzlich eine kleine Vorschau;
-ein Klick darauf öffnet den Editor.
+SäntisShot läuft im Hintergrund weiter. Erreichbar ist es jederzeit über das
+Symbol neben der Uhr (Mac: oben rechts in der Menüleiste).
 
-**Eine andere Taste festlegen:** *Einstellungen → Globaler Hotkey* → ins Feld
-klicken und die gewünschte Taste drücken. Sie gilt sofort, `Esc` bricht ab. Für
-Kombinationen `Ctrl`, `Alt`, `Shift` oder `Super` gedrückt halten.
-
-**Die Druck-Taste tut nichts?** Dafür gibt es zwei übliche Gründe:
-
-- **Der Desktop belegt sie selbst.** Cinnamon und GNOME legen von Haus aus ihr
-  eigenes Screenshot-Werkzeug darauf. Entweder du entfernst die Belegung in den
-  Tastatur-Einstellungen deines Systems, oder du legst in SäntisShot eine andere
-  Taste fest.
-- **Du bist in einer Wayland-Sitzung.** Dort darf kein Programm Tasten global
-  abfangen. SäntisShot trägt die Taste deshalb selbst in der Tastaturbelegung
-  der Arbeitsumgebung ein — bei Cinnamon und GNOME automatisch. Nachsehen kannst
-  du unter *Einstellungen → Aufnahme-Taste unter Wayland*.
-
-Fängt deine Arbeitsumgebung eine Taste ab, kommt sie beim Aufnehmen gar nicht
-erst an. Für diesen Fall gibt es unter dem Feld den Weg **«Von Hand
-eintragen»** — dort schreibst du sie als Text hinein, etwa `Ctrl+PrintScreen`.
+**Andere Taste gewünscht?** *Einstellungen → Globaler Hotkey* → ins Feld klicken
+und die gewünschte Taste drücken.
 
 ## Wenn etwas nicht klappt
 
-Geht etwas schief, erscheint unten rechts eine rote Meldung. Sie **bleibt
-stehen**, bis du sie schliesst — du kannst sie also in Ruhe lesen.
+**Eine rote Meldung erscheint:** Sie bleibt stehen, bis du sie schliesst. Der
+Knopf **«Bericht kopieren»** legt die Meldung samt den technischen Angaben in
+die Zwischenablage – genau das wird zur Klärung gebraucht. Von selbst sendet
+SäntisShot nichts. Der Bericht enthält Ordnerpfade aus deinem Benutzerordner;
+wirf vor dem Weitergeben kurz einen Blick darauf.
 
-Der Knopf **«Bericht kopieren»** legt diese Meldung zusammen mit den technischen
-Angaben in die Zwischenablage: Version, Betriebssystem, Arbeitsumgebung,
-Ablageorte und die letzten Zeilen des Protokolls. Genau das wird zur Klärung
-gebraucht — füg es einfach in deine Fehlermeldung ein.
+**Die Druck-Taste tut nichts:** Meist belegt der Desktop sie selbst mit seinem
+eigenen Screenshot-Werkzeug. Entweder diese Belegung in den
+Tastatur-Einstellungen des Systems entfernen oder in SäntisShot eine andere
+Taste festlegen. Kommt die Taste gar nicht an, gibt es unter dem Feld den Weg
+**«Kommt beim Drücken nichts an? Von Hand eintragen»**, etwa
+`Ctrl+PrintScreen`.
 
-Der Bericht entsteht erst beim Klick und geht ausschliesslich in die
-Zwischenablage; von selbst sendet SäntisShot nichts. Er enthält Dateipfade aus
-deinem Benutzerordner — wirf vor dem Weitergeben kurz einen Blick darauf.
+**Das Terminal meldet «Nicht unterstützte Datei … auf Befehlszeile
+angegeben»:** Die Datei liegt nicht dort, wo der Befehl sie sucht (Download noch
+nicht fertig oder in einem anderen Ordner gespeichert). Nimm die Zeile aus der
+Anleitung oben – sie lädt die Datei selbst.
 
-**Texterkennung meldet einen Fehler?** Dann fehlen meist die Sprachdateien von
-Tesseract. Prüfen lässt sich das im Terminal mit `tesseract --list-langs`;
-stehen dort `deu` und `eng` nicht, hilft der passende Befehl aus
-[Optionale Zusatzpakete](#optionale-zusatzpakete). Auf CachyOS ist das häufig: Das Paket `tesseract` bringt dort **keine einzige**
-Sprachdatei mit.
+**Das Terminal zeigt «Der Download wird als root und nicht Sandbox-geschützt
+durchgeführt …»:** Das ist nur ein Hinweis, kein Fehler. Die Installation hat
+trotzdem geklappt.
+
+**Die Texterkennung meldet einen Fehler:** Dann fehlen meist die Sprachdateien.
+Den passenden Befehl unter [Texterkennung (OCR)
+einrichten](#texterkennung-ocr-einrichten) ausführen. Unter CachyOS ist das
+besonders häufig: Das Paket `tesseract` bringt dort keine einzige Sprachdatei
+mit.
 
 ## Updates
 
-SäntisShot prüft beim Start und danach täglich, ob hier eine neuere Version
-liegt, und meldet sie in der App – das ist der einzige Netzwerkaufruf des
-Programms und lässt sich in den Einstellungen abschalten. Installiert wird nur
-auf ausdrücklichen Klick; der Download wird gegen Grösse und SHA-256-Prüfsumme
-des Releases verifiziert und dann eingespielt – unter Linux über den
-System-Installer, auf macOS im Finder zum Ziehen nach «Programme».
+SäntisShot prüft beim Start und danach täglich, ob es eine neue Version gibt,
+und meldet sie in der App. Installiert wird nur, wenn du auf den Knopf drückst;
+der Download wird vorher auf Vollständigkeit und Echtheit (SHA-256) geprüft.
+Die Prüfung ist der einzige Netzwerkzugriff des Programms und lässt sich in den
+Einstellungen abschalten. Eine Version auslassen: **«Diese Version
+überspringen»**.
 
-Willst du eine Version auslassen, drück im Update-Bereich auf **«Diese Version
-überspringen»** – dann meldet sie sich nicht mehr von selbst. Wer dort später
-wieder auf «Jetzt nach Updates suchen» drückt, bekommt sie trotzdem angezeigt.
+## Deinstallieren
+
+- **Linux Mint, Ubuntu, Pop!_OS:** `sudo apt remove saentis-shot`
+- **CachyOS:** `sudo pacman -R saentisshot-bin`
+- **Mac:** SaentisShot aus dem Ordner **Programme** in den Papierkorb ziehen.
+
+Deine Aufnahmen bleiben dabei erhalten (Ordner *Bilder/SäntisShot*).
+
+## Häufige Fragen
+
+**Ist SäntisShot kostenlos?** Ja. Lizenz: Elastic License 2.0.
+
+**Funktioniert es unter Wayland?** Ja, ohne Zusatzpakete. Nur unter Ubuntu
+empfiehlt sich `gnome-screenshot` (siehe [Ubuntu](#-ubuntu-und-pop_os)).
+
+**Werden Daten gesendet?** Nein. Bildbearbeitung, Historie und Texterkennung
+laufen vollständig auf dem Gerät. Keine Telemetrie, keine Konten, keine Cloud.
+Aufnahmen werden so gespeichert, dass andere Benutzerkonten auf demselben
+Rechner sie nicht lesen können.
+
+**Gibt es SäntisShot für andere Systeme?** Nein. Andere Linux-Systeme können
+die `AppImage` aus dem Release versuchen (ausführbar machen, dann starten) – sie
+ist aber nicht getestet und wird nicht unterstützt.
+
+## Für Fortgeschrittene: Download prüfen
+
+Im Ordner mit der heruntergeladenen Datei:
+
+```bash
+curl -fsSLO https://github.com/dbr24/SaentisShot-Releases/releases/latest/download/SHA256SUMS.txt
+sha256sum -c SHA256SUMS.txt --ignore-missing
+```
+
+Für jede vorhandene Datei muss `OK` erscheinen. Auf dem Mac lautet der zweite
+Befehl `shasum -a 256 -c SHA256SUMS.txt --ignore-missing`.
 
 ## Sicherheit
 
 Sicherheitslücken bitte **nicht** über öffentliche Issues melden, sondern
 vertraulich über den Reiter **Security → Report a vulnerability**.
-
-Alle Bildverarbeitung, die Historie und die Texterkennung laufen vollständig
-lokal auf dem Gerät. Es werden keine Nutzungsdaten erhoben oder versendet.
-Aufnahmen werden mit Dateirechten `0600` gespeichert – auf Rechnern mit
-mehreren Benutzerkonten kann niemand sonst sie lesen.
 
 ## Lizenz
 
@@ -329,312 +251,236 @@ Elastic License 2.0 – siehe [LICENSE](LICENSE).
 
 # SäntisShot — Screenshot tool for Linux and macOS
 
-**SäntisShot is a free screenshot tool for Linux and macOS** (X11 and Wayland on
-Linux) with region selection, **scrolling screenshots** (capture a whole web
-page as one image), an annotation editor, **text recognition (OCR)** and a
-history.
+**SäntisShot is a free screenshot tool** with region selection, **scrolling
+screenshots** (a whole web page in one image), an annotation editor, **text
+recognition (OCR)** and a history. Everything runs locally on your device.
 
-SäntisShot is available for **Linux Mint**, **Ubuntu**, **Pop!_OS**, **CachyOS**
-and **macOS (Apple Silicon)** — and for those only. We deliberately offer
-nothing for other systems: we could neither test nor support it there.
-
-**Verified** on Linux Mint, Ubuntu, CachyOS and macOS. Pop!_OS uses the same
-package as Ubuntu and was installed by a user.
-
+SäntisShot is available for **Linux Mint**, **Ubuntu**, **Pop!_OS**,
+**CachyOS** and **Macs with Apple silicon**.
 
 ### ⬇️ [Download the current version](https://github.com/dbr24/SaentisShot-Releases/releases/latest)
 
-> This repository contains the **ready-made installation packages** only. The
-> source code is not published.
-
-## What SäntisShot does
-
-| | |
-|---|---|
-| **Capture** | Whole screen, a single window, a freely chosen region — or **scrolling**, when the page is taller than the screen |
-| **Annotate** | Arrows, lines, rectangles, circles, text, numbered stamps, shadows; elements snap to each other |
-| **Redact** | Pixelate sensitive areas — movable and rotatable afterwards |
-| **Read text** | OCR straight from the image, fully offline (Tesseract) |
-| **Organise** | History by date, lossless projects, export as PNG, JPG or WebP |
-| **Language** | Interface in **German and English**, follows the system language |
-
-**Privacy:** everything runs locally on your device. The only network request is
-the update check against GitHub, and it can be switched off. No telemetry, no
-accounts, no cloud.
-
-## Frequently asked questions
-
-**Is SäntisShot free?** Yes. Licence: Elastic License 2.0.
-
-**Does it work on Wayland?** Yes. For security reasons Wayland does not let
-applications read the screen themselves, so a native helper is required
-(`grim`+`slurp`, `gnome-screenshot` or `kde-spectacle`, see below). Under X11
-nothing extra is needed.
-
-**Can it capture entire web pages?** Yes — the scrolling screenshot keeps
-capturing frames and stitches them into one tall image automatically.
-
-**Is there a Windows or macOS build?** macOS (Apple Silicon) ships as a `.dmg` —
-see [Installation](#-macos-apple-silicon-1). There is no package for Windows or
-for Intel Macs at the moment.
+> This repository contains the ready-made installation packages only, not the
+> source code.
 
 ## Installation
 
-### Which file do I need?
+| Your system | How |
+|---|---|
+| **Linux Mint** | [Download, double-click – done](#-linux-mint-1) |
+| **Ubuntu**, **Pop!_OS** | [One line in a terminal](#-ubuntu-and-pop_os) |
+| **CachyOS** | [Four lines in a terminal](#-cachyos-1) |
+| **Mac** with Apple silicon (M1 or newer) | [Download, drag the app into Applications](#-mac-1) |
 
-The [download page](https://github.com/dbr24/SaentisShot-Releases/releases/latest)
-holds several files. Here is the right one:
+There is currently no package for Windows or for Intel Macs.
 
-| Your system | File | Instructions |
-|---|---|---|
-| **Mac** with Apple chip (M1–M4) | `SaentisShot_…_aarch64.dmg` | [macOS](#-macos-apple-silicon-1) |
-| **Linux Mint**, Ubuntu, Pop!_OS | `SaentisShot_…_amd64.deb` | [Debian family](#-linux-mint-ubuntu-and-pop_os) |
-| **CachyOS** | `PKGBUILD` | [CachyOS](#-cachyos-1) |
+> **Opening a terminal:** on Linux press `Ctrl`+`Alt`+`T`; on a Mac press
+> `Cmd`+`Space`, type "Terminal" and press `Enter`. Paste the command
+> (right-click → Paste) and press `Enter`. **Nothing appears while you type a
+> password** – that is normal. Just type it blind and press `Enter`.
 
-The release also contains an `AppImage` for other Linux systems. It is **not
-tested** and not supported; if you want to try it, make it executable with
-`chmod +x` and run it directly.
-
-`SHA256SUMS.txt` is only needed if you want to
-[verify](#verifying-the-download-recommended) the download.
-
-> **Mac with an Intel processor?** There is no package for it at the moment –
-> the `aarch64` build will not run there.
-
-For every system below, **the simplest route comes first**. If you have never
-used a terminal, just follow the first block — that is enough. The short
-commands underneath are a shortcut for the practised; they fetch the current
-version themselves.
-
-> **Opening a terminal:** on Linux press `Ctrl`+`Alt`+`T`, on macOS press
-> `Cmd`+`Space` and type "Terminal". Paste the command, press `Enter`. While
-> you type a password nothing moves on screen — that is intended, not a fault.
-
-### 🐧 Linux Mint, Ubuntu and Pop!_OS
-
-**Step by step:**
+### 🐧 Linux Mint
 
 1. On the [download page](https://github.com/dbr24/SaentisShot-Releases/releases/latest)
-   click the file ending in `_amd64.deb`. It lands in your **Downloads** folder.
-2. Open a terminal and paste this single line:
+   click the file ending in **`_amd64.deb`**.
+2. Open your **Downloads** folder and **double-click** the file.
+3. Click **"Install Package"** and enter your password.
 
-   ```bash
-   sudo apt install -y ~/Downloads/SaentisShot_*_amd64.deb
-   ```
+Done – **SäntisShot** is now in the start menu.
 
-On **Linux Mint** a double-click on the downloaded file works just as well —
-the package installer opens and does the rest. On Ubuntu and Pop!_OS what the
-double-click opens depends on the release; the command above works everywhere.
-
-**Shortcut** — downloads and installs in one go:
+**Or in a terminal** – this single line fetches the current version and
+installs it:
 
 ```bash
-curl -fsSLO "$(curl -fsSL https://api.github.com/repos/dbr24/SaentisShot-Releases/releases/latest \
-  | grep -o 'https://github.com/dbr24/SaentisShot-Releases/releases/download/[^"]*_amd64\.deb' | head -n1)"
-sudo apt install -y ./SaentisShot_*_amd64.deb
+wget -qO /tmp/saentisshot.deb "$(wget -qO- https://api.github.com/repos/dbr24/SaentisShot-Releases/releases/latest | grep -o 'https://[^"]*_amd64\.deb' | head -n1)" && sudo apt install -y /tmp/saentisshot.deb
 ```
 
-`apt` pulls in the required libraries. Recommended for text recognition (OCR):
+### 🐧 Ubuntu and Pop!_OS
+
+Open a terminal and paste this **single line** – it fetches the current version
+and installs it:
+
+```bash
+wget -qO /tmp/saentisshot.deb "$(wget -qO- https://api.github.com/repos/dbr24/SaentisShot-Releases/releases/latest | grep -o 'https://[^"]*_amd64\.deb' | head -n1)" && sudo apt install -y /tmp/saentisshot.deb
+```
+
+Done – **SäntisShot** is now in the application menu. (What a double-click on
+the downloaded file opens depends on the Ubuntu release; the line above works
+the same everywhere.)
+
+> **Ubuntu with Wayland** (the default) – additionally, once:
+>
+> ```bash
+> sudo apt install -y gnome-screenshot
+> ```
+>
+> Without it Ubuntu asks for confirmation on every capture. The brief flash when
+> capturing comes from Ubuntu itself. Scrolling capture is not possible on
+> Ubuntu with Wayland; screen, window and region work.
+
+### 🐧 CachyOS
+
+There is no way around the terminal here, because CachyOS builds the package
+itself. Paste the four lines one after another:
+
+```bash
+sudo pacman -S --needed base-devel
+mkdir -p ~/saentisshot-build && cd ~/saentisshot-build
+curl -fLO https://github.com/dbr24/SaentisShot-Releases/releases/latest/download/PKGBUILD
+makepkg -si
+```
+
+Do **not** put `sudo` in front of the last line – `makepkg` asks for the
+password itself at the end. The PKGBUILD downloads the official package and
+verifies its SHA-256 checksum.
+
+### 🍎 Mac
+
+1. On the [download page](https://github.com/dbr24/SaentisShot-Releases/releases/latest)
+   click the file ending in **`_aarch64.dmg`** and double-click it.
+2. Drag **SaentisShot** into the **Applications** folder.
+3. **On first launch** macOS says the app cannot be verified (it is not
+   notarised with Apple). Allow it once:
+   - **macOS 15 (Sequoia) and newer:** close the message with **Done**, then
+     open **System Settings → Privacy & Security**, scroll all the way down and
+     click **Open Anyway** next to "SaentisShot was blocked".
+   - **macOS 14 and older:** **right-click** the app → **Open** → **Open**
+     again.
+4. Allow **Screen Recording** when asked, then restart SäntisShot once. Without
+   this permission macOS only captures the desktop wallpaper.
+
+SäntisShot is a **menu bar app**: its icon appears at the top right of the menu
+bar, not in the Dock.
+
+<details>
+<summary><b>Or in a terminal</b> (also skips step 3)</summary>
+
+```bash
+curl -fLo /tmp/SaentisShot.dmg "$(curl -fsSL https://api.github.com/repos/dbr24/SaentisShot-Releases/releases/latest | grep -o 'https://[^"]*_aarch64\.dmg' | head -n1)"
+hdiutil attach /tmp/SaentisShot.dmg
+cp -R /Volumes/SaentisShot/SaentisShot.app /Applications/
+hdiutil detach /Volumes/SaentisShot
+xattr -dr com.apple.quarantine /Applications/SaentisShot.app
+open /Applications/SaentisShot.app
+```
+
+</details>
+
+## Setting up text recognition (OCR)
+
+Text recognition needs the free program Tesseract. Run the command for your
+system once:
+
+**Linux Mint, Ubuntu, Pop!_OS:**
 
 ```bash
 sudo apt install -y tesseract-ocr tesseract-ocr-deu tesseract-ocr-eng
 ```
 
-> **On a Wayland session** (the default on Ubuntu) also install
-> `sudo apt install -y gnome-screenshot` — otherwise GNOME asks for confirmation
-> on every capture. The brief flash when capturing comes from GNOME itself and
-> cannot be switched off.
-
-*Uninstall:* `sudo apt remove saentisshot`
-
-### 🐧 CachyOS
-
-There is no way around the terminal here: CachyOS assembles the package itself.
-Paste the four lines in order — the second one creates a dedicated empty
-folder, because building produces files:
+**CachyOS:**
 
 ```bash
-sudo pacman -S --needed base-devel curl          # once, if not present yet
-mkdir -p ~/saentisshot-build && cd ~/saentisshot-build
-curl -fsSLO "$(curl -fsSL https://api.github.com/repos/dbr24/SaentisShot-Releases/releases/latest \
-  | grep -o 'https://github.com/dbr24/SaentisShot-Releases/releases/download/[^"]*/PKGBUILD' | head -n1)"
-makepkg -si
+sudo pacman -S --needed tesseract tesseract-data-deu tesseract-data-eng
 ```
 
-> **Do not run this as `root`, and not with `sudo makepkg`.** `makepkg` refuses
-> to run as root and aborts with an error. Call it as your normal user — it asks
-> for the password itself once the package is built.
-
-The PKGBUILD downloads the official package, **verifies its SHA-256 digest** and
-installs it as `saentisshot-bin`. Recommended for OCR:
-
-```bash
-sudo pacman -S tesseract tesseract-data-deu tesseract-data-eng
-```
-
-*Uninstall:* `sudo pacman -R saentisshot-bin`
-
-### 🍎 macOS (Apple Silicon)
-
-**With the mouse:** download the `.dmg` from the
-[download page](https://github.com/dbr24/SaentisShot-Releases/releases/latest),
-double-click it and drag **SäntisShot** into **Applications**. Then continue at
-“On first launch” below.
-
-**Or in a terminal** – downloads, mounts and installs into Applications:
-
-```bash
-curl -fsSLO "$(curl -fsSL https://api.github.com/repos/dbr24/SaentisShot-Releases/releases/latest \
-  | grep -o 'https://github.com/dbr24/SaentisShot-Releases/releases/download/[^"]*_aarch64\.dmg' | head -n1)"
-hdiutil attach SaentisShot_*_aarch64.dmg
-cp -R /Volumes/SaentisShot/SaentisShot.app /Applications/
-hdiutil detach /Volumes/SaentisShot
-xattr -dr com.apple.quarantine /Applications/SaentisShot.app   # clear the Gatekeeper flag
-open /Applications/SaentisShot.app
-```
-
-#### On first launch
-
-macOS refuses to open the app (SäntisShot is not notarised with
-Apple). Allow it once – the route depends on your macOS version:
-
-- **macOS 15 (Sequoia) and newer:** double-click the app, dismiss the message
-  with **Done**. Then open **System Settings → Privacy & Security**, scroll down
-  to “SaentisShot was blocked …” and click **Open Anyway**. Confirm with Touch
-  ID or your password. *(The old right-click trick no longer works on these
-  versions.)*
-- **macOS 14 (Sonoma) and older:** **right-click** the app → **Open** →
-  **Open** again.
-
-After that it always starts normally. The terminal command above skips this by
-removing the quarantine flag right away.
-
-**Two things on first launch:**
-
-1. macOS asks for the **Screen Recording** permission (System Settings → Privacy
-   & Security → Screen Recording). Without it, any app on macOS only captures
-   the desktop wallpaper. Restart SäntisShot once after granting it – the
-   permission then survives future updates.
-2. SäntisShot is a **menu bar app**: it lives in the status bar at the top
-   right, not in the Dock.
-
-For text recognition (OCR) two commands are enough – the big language pack
-(`tesseract-lang`, over 1 GB) is not needed, SäntisShot only uses German and
-English:
+**Mac** (requires [Homebrew](https://brew.sh)):
 
 ```bash
 brew install tesseract
-curl -fsSL https://github.com/tesseract-ocr/tessdata/raw/main/deu.traineddata \
-  -o "$(brew --prefix tesseract)/share/tessdata/deu.traineddata"
+curl -fsSL https://github.com/tesseract-ocr/tessdata/raw/main/deu.traineddata -o "$(brew --prefix tesseract)/share/tessdata/deu.traineddata"
 ```
-
-On first use SäntisShot keeps its own copy of the language data, so a later
-Tesseract upgrade cannot silently fall back to English.
-
-*Uninstall:* `rm -rf /Applications/SaentisShot.app`
-
-### Verifying the download (recommended)
-
-```bash
-curl -fsSLO "$(curl -fsSL https://api.github.com/repos/dbr24/SaentisShot-Releases/releases/latest \
-  | grep -o 'https://github.com/dbr24/SaentisShot-Releases/releases/download/[^"]*/SHA256SUMS\.txt' | head -n1)"
-sha256sum -c SHA256SUMS.txt --ignore-missing
-```
-
-The output must read `OK` for every file present. On macOS the command is
-`shasum -a 256 -c SHA256SUMS.txt --ignore-missing`.
-
-## Optional extras
-
-Text recognition (OCR) in the editor:
-
-```bash
-sudo apt install -y tesseract-ocr tesseract-ocr-deu tesseract-ocr-eng   # Mint, Ubuntu, Pop!_OS
-sudo pacman -S tesseract tesseract-data-deu tesseract-data-eng          # CachyOS
-```
-
-Only needed for **Wayland** sessions, depending on your desktop:
-
-```bash
-sudo apt install -y grim slurp          # Sway, Hyprland
-sudo apt install -y gnome-screenshot    # GNOME, Cinnamon
-sudo apt install -y kde-spectacle       # KDE Plasma
-```
-
-Under X11 (the default on Linux Mint) no extra tools are needed. On GNOME 42 and
-newer, `gnome-screenshot` is no longer installed by default; SäntisShot then
-falls back to the GNOME Shell’s own interface.
 
 ## First steps
 
 **Taking a screenshot:** press the **Print key** (labelled `Print`, `PrtSc` or
-`Druck`, depending on your keyboard). A small chooser appears with the four
-capture types — screen, window, region, scrolling. Pick one with the mouse or
-the keys `1` to `4`; `Enter` repeats the type you used last.
+`Druck`, depending on your keyboard). A small chooser with the four capture
+types appears at the bottom right – screen, window, region, scrolling. Pick one
+with the mouse or the keys `1` to `4`; `Enter` repeats the type you used last.
 
-The app runs in the background while you work. You can reach it any time through
-its icon in the system tray next to the clock.
-
-**After the capture** the image is already in your clipboard — paste it with
-`Ctrl+V`. A small preview also appears in the bottom right corner; clicking it
+**After the capture** the image is already in your clipboard – paste it
+anywhere with `Ctrl`+`V`. A preview appears at the bottom right; clicking it
 opens the editor.
 
-**Choosing a different key:** *Settings → Global hotkey* → click the field and
-press the key you want. It takes effect immediately, `Esc` cancels. Hold `Ctrl`,
-`Alt`, `Shift` or `Super` for a combination.
+SäntisShot keeps running in the background. You can reach it any time through
+its icon next to the clock (Mac: top right in the menu bar).
 
-**The Print key does nothing?** There are two usual reasons:
-
-- **Your desktop claims it.** Cinnamon and GNOME bind their own screenshot tool
-  to it out of the box. Either remove that binding in your system’s keyboard
-  settings, or choose a different key in SäntisShot.
-- **You are in a Wayland session.** There, no application may grab keys
-  globally. SäntisShot therefore registers the key in your desktop’s own
-  keyboard shortcuts — automatically on Cinnamon and GNOME. You can check under
-  *Settings → Capture key under Wayland*.
-
-If your desktop intercepts a key, it never reaches the recorder in the first
-place. For that case there is **“Enter it manually”** below the field, where you
-type it as text, for example `Ctrl+PrintScreen`.
+**Want a different key?** *Settings → Global hotkey* → click the field and
+press the key you want.
 
 ## When something goes wrong
 
-If something fails, a red message appears in the bottom right corner. It **stays
-there** until you close it, so you can read it at your leisure.
+**A red message appears:** it stays until you close it. The **"Copy report"**
+button puts the message together with the technical details into your
+clipboard – exactly what is needed to work out what happened. SäntisShot never
+sends anything on its own. The report contains folder paths from your home
+folder, so have a quick look before passing it on.
 
-The **“Copy report”** button puts that message into your clipboard together with
-the technical details: version, operating system, desktop environment, storage
-folders and the last lines of the log. That is exactly what is needed to work
-out what happened — just paste it into your bug report.
+**The Print key does nothing:** usually your desktop claims it for its own
+screenshot tool. Either remove that binding in your system's keyboard settings
+or choose a different key in SäntisShot. If the key never arrives at all, use
+**"Nothing registered when pressing? Enter it manually"** below the field, for
+example `Ctrl+PrintScreen`.
 
-The report is only assembled when you click, and it only ever goes to your
-clipboard; SäntisShot never sends anything on its own. It contains file paths
-from your home folder, so do have a quick look before passing it on.
+**The terminal says "Unsupported file … given on commandline":** the file is
+not where the command looks for it (the download has not finished, or it was
+saved to a different folder). Use the line from the instructions above – it
+downloads the file itself.
 
-**Text recognition reports an error?** Usually Tesseract’s language files are
-missing. Check with `tesseract --list-langs` in a terminal; if `deu` and `eng`
-are not listed, use the matching command from
-[Optional extras](#optional-extras). This is especially common on CachyOS: there the `tesseract` package ships **no**
-language file at all.
+**The terminal shows "Download is performed unsandboxed as root …":** that is
+only a notice, not an error. The installation worked anyway.
+
+**Text recognition reports an error:** usually the language files are missing.
+Run the matching command under [Setting up text recognition
+(OCR)](#setting-up-text-recognition-ocr). This is especially common on CachyOS:
+there the `tesseract` package ships no language file at all.
 
 ## Updates
 
-The app checks for new versions itself and installs them on explicit click – on
-Linux through the system installer, on macOS by opening the `.dmg` in Finder. The
-check is the only network request it makes and can be switched off in the settings.
+SäntisShot checks for a new version at start-up and daily after that, and
+announces it in the app. It only installs when you press the button; the
+download is checked for completeness and authenticity (SHA-256) first. The
+check is the program's only network access and can be switched off in the
+settings. To leave a version out: **"Skip this version"**.
 
-To leave a version out, press **“Skip this version”** in the update section — it
-will no longer announce itself. Checking manually later still shows it.
+## Uninstalling
+
+- **Linux Mint, Ubuntu, Pop!_OS:** `sudo apt remove saentis-shot`
+- **CachyOS:** `sudo pacman -R saentisshot-bin`
+- **Mac:** drag SaentisShot from **Applications** to the Trash.
+
+Your captures are kept (folder *Pictures/SäntisShot*).
+
+## Frequently asked questions
+
+**Is SäntisShot free?** Yes. Licence: Elastic License 2.0.
+
+**Does it work on Wayland?** Yes, without extra packages. Only on Ubuntu is
+`gnome-screenshot` recommended (see [Ubuntu](#-ubuntu-and-pop_os)).
+
+**Is any data sent?** No. Image editing, history and text recognition run
+entirely on your device. No telemetry, no accounts, no cloud. Captures are
+stored so that other user accounts on the same computer cannot read them.
+
+**Is SäntisShot available for other systems?** No. Other Linux systems can try
+the `AppImage` from the release (make it executable, then run it) – but it is
+not tested and not supported.
+
+## For advanced users: verifying the download
+
+In the folder containing the downloaded file:
+
+```bash
+curl -fsSLO https://github.com/dbr24/SaentisShot-Releases/releases/latest/download/SHA256SUMS.txt
+sha256sum -c SHA256SUMS.txt --ignore-missing
+```
+
+Every file present must report `OK`. On a Mac the second command is
+`shasum -a 256 -c SHA256SUMS.txt --ignore-missing`.
 
 ## Security
 
-Please do **not** report vulnerabilities through public issues, but privately via
-the **Security** tab → **Report a vulnerability**.
-
-All image processing, the history and the text recognition run entirely locally
-on your device. No usage data is collected or transmitted. Captures are stored
-with file mode `0600` — on machines with several user accounts nobody else can
-read them.
+Please do **not** report vulnerabilities through public issues, but privately
+via the **Security** tab → **Report a vulnerability**.
 
 ## Licence
 
