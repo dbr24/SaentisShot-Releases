@@ -27,13 +27,15 @@ in der Regel innerhalb von 7 Tagen.
   kopieren» an einer Fehlermeldung sammelt Version, Umgebung und die letzten
   Protokollzeilen erst beim Klick. Gesendet wird nichts; was du damit machst,
   entscheidest du.
-- **Verifizierte Updates.** Downloads kommen ausschliesslich von GitHub-Hosts
-  und werden gegen die im Release hinterlegte Grösse und SHA-256-Prüfsumme
-  geprüft. Installiert wird nie automatisch, sondern nur auf Klick über den
+- **Verifizierte Updates.** Downloads kommen ausschliesslich aus diesem
+  Repository (Release-Dateien) und werden gegen die im Release hinterlegte
+  Grösse und SHA-256-Prüfsumme geprüft. Installiert wird nie automatisch, sondern nur auf Klick über den
   System-Installer.
 - **Prüfsummen selbst kontrollieren:** Jedes Release enthält `SHA256SUMS.txt`.
+  Im Ordner mit dem Download:
 
   ```bash
+  curl -fsSLO https://github.com/dbr24/SaentisShot-Releases/releases/latest/download/SHA256SUMS.txt
   sha256sum -c SHA256SUMS.txt --ignore-missing
   ```
 
@@ -60,8 +62,9 @@ an acknowledgement within 7 days.
 - **One network request only.** The app checks the GitHub releases for a newer
   version. It can be switched off in the settings. Nothing else leaves the
   device — no telemetry, no analytics, no user accounts.
-- **Updates are verified.** Downloads are restricted to GitHub hosts and checked
-  against the size and SHA-256 digest published with the release. The app never
+- **Updates are verified.** Downloads are restricted to this repository's
+  release files and checked against the size and SHA-256 digest published with
+  the release. The app never
   installs on its own; installation is handed to the system installer.
 - **Captures are private.** Screenshots, thumbnails, temporary files and the log
   are created with file mode `0600` and their directories with `0700`. On
