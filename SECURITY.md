@@ -29,8 +29,9 @@ in der Regel innerhalb von 7 Tagen.
   entscheidest du.
 - **Verifizierte Updates.** Downloads kommen ausschliesslich aus diesem
   Repository (Release-Dateien) und werden gegen die im Release hinterlegte
-  Grösse und SHA-256-Prüfsumme geprüft. Installiert wird nie automatisch, sondern nur auf Klick über den
-  System-Installer.
+  Grösse und SHA-256-Prüfsumme geprüft. Installiert wird nie automatisch,
+  sondern erst auf Klick – unter Linux über den Paketverwalter des Systems nach
+  Eingabe des Passworts, auf dem Mac aus dem geöffneten Installationsabbild.
 - **Prüfsummen selbst kontrollieren:** Jedes Release enthält `SHA256SUMS.txt`.
   Im Ordner mit dem Download:
 
@@ -64,8 +65,9 @@ an acknowledgement within 7 days.
   device — no telemetry, no analytics, no user accounts.
 - **Updates are verified.** Downloads are restricted to this repository's
   release files and checked against the size and SHA-256 digest published with
-  the release. The app never
-  installs on its own; installation is handed to the system installer.
+  the release. The app never installs on its own, only after a click – on Linux
+  through the system's package manager after you enter your password, on a Mac
+  from the opened disk image.
 - **Captures are private.** Screenshots, thumbnails, temporary files and the log
   are created with file mode `0600` and their directories with `0700`. On
   machines with several user accounts nobody else can read them.
