@@ -141,8 +141,19 @@ SäntisShot, ob die Taste eingetragen ist. Sonst in den Tastatur-Einstellungen
 des Systems ein eigenes Kürzel mit dem Befehl `saentisshot --hotkey` anlegen –
 oder in SäntisShot eine andere Taste wählen.
 
-**Ubuntu zeigt bei jeder Aufnahme sein eigenes Aufnahme-Fenster:**
-`sudo apt install -y gnome-screenshot` und SäntisShot neu starten.
+**Ubuntu öffnet sein eigenes Aufnahme-Fenster** (bei der Druck-Taste oder bei
+jeder Aufnahme): Diese zwei Zeilen geben die Taste an SäntisShot und erlauben
+ihm die Aufnahmen; danach ab- und wieder anmelden. Nimmt die Auswahl dann keine
+Tasten an, mit der Maus wählen.
+
+```bash
+gsettings set org.gnome.shell.keybindings show-screenshot-ui "[]"
+gdbus call --session --dest org.freedesktop.impl.portal.PermissionStore --object-path /org/freedesktop/impl/portal/PermissionStore --method org.freedesktop.impl.portal.PermissionStore.SetPermission screenshot true screenshot SaentisShot "['yes']"
+```
+
+**Mint meldet beim Installieren «Programmfehler in aptkit»:** Das Passwort kam
+zu spät (Mint wartet nur rund 25 Sekunden). Fenster schliessen, die Datei noch
+einmal doppelklicken und das Passwort zügig eingeben.
 
 **Das Terminal zeigt «… nicht Sandbox-geschützt durchgeführt …»:** nur ein
 Hinweis – die Installation hat geklappt.
@@ -164,7 +175,9 @@ Programms; abschaltbar in den Einstellungen.
 - **CachyOS:** `sudo pacman -R saentisshot-bin`
 - **Mac:** SaentisShot aus **Programme** in den Papierkorb ziehen.
 
-Die Aufnahmen bleiben erhalten (Ordner *Bilder/SäntisShot*).
+Die Aufnahmen bleiben erhalten (Ordner *Bilder/SäntisShot*). Wer unter Ubuntu
+die Druck-Taste wie oben freigegeben hat, gibt sie GNOME so zurück:
+`gsettings reset org.gnome.shell.keybindings show-screenshot-ui`
 
 ## Häufige Fragen
 
@@ -337,8 +350,19 @@ is registered. Otherwise add a custom shortcut with the command
 `saentisshot --hotkey` in your system's keyboard settings – or pick a different
 key in SäntisShot.
 
-**Ubuntu shows its own capture window on every capture:**
-`sudo apt install -y gnome-screenshot`, then restart SäntisShot.
+**Ubuntu opens its own capture window** (on the Print key or on every
+capture): these two lines hand the key to SäntisShot and allow it to take
+screenshots; then log out and back in. If the chooser then ignores the keys,
+use the mouse.
+
+```bash
+gsettings set org.gnome.shell.keybindings show-screenshot-ui "[]"
+gdbus call --session --dest org.freedesktop.impl.portal.PermissionStore --object-path /org/freedesktop/impl/portal/PermissionStore --method org.freedesktop.impl.portal.PermissionStore.SetPermission screenshot true screenshot SaentisShot "['yes']"
+```
+
+**Mint reports "a bug in aptkit" while installing:** the password came too late
+(Mint waits only about 25 seconds). Close the window, double-click the file
+again and enter the password promptly.
 
 **The terminal shows "… performed unsandboxed as root …":** only a notice – the
 installation worked.
@@ -360,7 +384,9 @@ access; it can be switched off in the settings.
 - **CachyOS:** `sudo pacman -R saentisshot-bin`
 - **Mac:** drag SaentisShot from **Applications** to the Bin.
 
-Your captures are kept (folder *Pictures/SäntisShot*).
+Your captures are kept (folder *Pictures/SäntisShot*). If you freed the Print
+key on Ubuntu as shown above, this gives it back to GNOME:
+`gsettings reset org.gnome.shell.keybindings show-screenshot-ui`
 
 ## FAQ
 
