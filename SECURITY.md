@@ -20,9 +20,11 @@ in der Regel innerhalb von 7 Tagen.
   Gerät. Der einzige Netzwerkaufruf ist der Update-Check gegen die GitHub-API
   (in den Einstellungen abschaltbar).
 - **Keine Telemetrie, keine Analytics, keine Nutzerkonten.**
-- **Aufnahmen sind privat.** Screenshots, Projektdaten, Vorschaubilder und die
-  Protokolldatei werden mit Dateirechten 0600 in Verzeichnissen mit 0700
-  abgelegt – andere Nutzer desselben Rechners können sie nicht lesen.
+- **Aufnahmen sind privat.** Screenshots, Projektdaten, Vorschaubilder,
+  Zwischendateien und die Protokolldatei werden mit Dateirechten 0600 in
+  Verzeichnissen mit 0700 abgelegt – andere Nutzer desselben Rechners können
+  sie nicht lesen. Was du mit «Exportieren …» bewusst herausgibst, bekommt die
+  Rechte, die dein System neuen Dateien gibt.
 - **Fehlerberichte gehen nur in die Zwischenablage.** Der Knopf «Bericht
   kopieren» an einer Fehlermeldung sammelt Version, Umgebung und die letzten
   Protokollzeilen erst beim Klick. Gesendet wird nichts; was du damit machst,
@@ -46,6 +48,10 @@ in der Regel innerhalb von 7 Tagen.
 
 # Security policy — English
 
+## Supported versions
+
+Security updates are provided for the current minor version.
+
 ## Reporting a vulnerability
 
 Please do **not** report security issues through public issues. Use GitHub's
@@ -68,9 +74,11 @@ an acknowledgement within 7 days.
   the release. The app never installs on its own, only after a click – on Linux
   through the system's package manager after you enter your password, on a Mac
   from the opened disk image.
-- **Captures are private.** Screenshots, thumbnails, temporary files and the log
-  are created with file mode `0600` and their directories with `0700`. On
-  machines with several user accounts nobody else can read them.
+- **Captures are private.** Screenshots, project data, thumbnails, temporary
+  files and the log are created with file mode `0600` and their directories
+  with `0700`. On machines with several user accounts nobody else can read
+  them. What you deliberately hand out with “Export …” gets the mode your system
+  gives new files.
 - **Error reports only ever reach your clipboard.** The “Copy report” button on
   an error message gathers version, environment and the last log lines when you
   click it. Nothing is sent anywhere; what you do with it is up to you.
