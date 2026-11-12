@@ -36,7 +36,7 @@ in der Regel innerhalb von 7 Tagen.
   Im Ordner mit dem Download:
 
   ```bash
-  curl -fsSLO https://github.com/dbr24/SaentisShot-Releases/releases/latest/download/SHA256SUMS.txt
+  wget -qO SHA256SUMS.txt https://github.com/dbr24/SaentisShot-Releases/releases/latest/download/SHA256SUMS.txt
   sha256sum -c SHA256SUMS.txt --ignore-missing
   ```
 

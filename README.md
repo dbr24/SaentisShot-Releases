@@ -195,12 +195,12 @@ Für Windows und Macs mit Intel-Prozessor gibt es kein Paket.
 Im Ordner mit der heruntergeladenen Datei:
 
 ```bash
-curl -fsSLO https://github.com/dbr24/SaentisShot-Releases/releases/latest/download/SHA256SUMS.txt
+wget -qO SHA256SUMS.txt https://github.com/dbr24/SaentisShot-Releases/releases/latest/download/SHA256SUMS.txt
 sha256sum -c SHA256SUMS.txt --ignore-missing
 ```
 
-Für jede vorhandene Datei muss `OK` erscheinen (Mac:
-`shasum -a 256 -c SHA256SUMS.txt --ignore-missing`).
+Für jede vorhandene Datei muss `OK` erscheinen. Auf dem Mac: `curl -fsSLO`
+statt `wget -qO SHA256SUMS.txt` und `shasum -a 256` statt `sha256sum`.
 
 ## Sicherheit und Lizenz
 
@@ -404,12 +404,12 @@ for Windows or Intel Macs.
 In the folder with the downloaded file:
 
 ```bash
-curl -fsSLO https://github.com/dbr24/SaentisShot-Releases/releases/latest/download/SHA256SUMS.txt
+wget -qO SHA256SUMS.txt https://github.com/dbr24/SaentisShot-Releases/releases/latest/download/SHA256SUMS.txt
 sha256sum -c SHA256SUMS.txt --ignore-missing
 ```
 
-Every file present must show `OK` (Mac:
-`shasum -a 256 -c SHA256SUMS.txt --ignore-missing`).
+Every file present must show `OK`. On a Mac: `curl -fsSLO` instead of
+`wget -qO SHA256SUMS.txt`, and `shasum -a 256` instead of `sha256sum`.
 
 ## Security and licence
 
