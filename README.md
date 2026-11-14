@@ -120,6 +120,9 @@ curl -fsSL https://github.com/tesseract-ocr/tessdata/raw/main/deu.traineddata -o
   abgelehnt. In SäntisShot unter *Einstellungen → Aufnahme* auf **«Erneut
   fragen»** klicken, dann «Weiter» und «Allow».
 - **Texterkennung meldet einen Fehler:** Die Meldung nennt den passenden Befehl.
+- **Scrolling-Aufnahme: Die Seite scrollt nicht weiter:** Den Mauszeiger an eine
+  andere Stelle der Seite setzen. Manche Seiten halten das Mausrad fest,
+  solange der Zeiger über einem bestimmten Kasten liegt.
 - **Pop!_OS: «Bereich» nimmt den ganzen Bildschirm:** In COSMICs Leiste beim
   ersten Mal links die Auswahl anklicken – COSMIC merkt sich das.
 - **«… nicht Sandbox-geschützt durchgeführt …»** beim Installieren: nur ein
@@ -287,6 +290,9 @@ curl -fsSL https://github.com/tesseract-ocr/tessdata/raw/main/deu.traineddata -o
   denied. In SäntisShot, click **"Ask again"** under *Settings → Capture*, then
   "Continue" and "Allow".
 - **Text recognition reports an error:** the message names the command to run.
+- **Scrolling capture: the page stops scrolling:** put the pointer on another
+  spot of the page. Some pages hold on to the mouse wheel while the pointer is
+  over a certain box.
 - **Pop!_OS: "Region" captures the whole screen:** in COSMIC's bar, click the
   selection on the left the first time – COSMIC remembers it.
 - **"… performed unsandboxed …"** while installing: only a notice, the
